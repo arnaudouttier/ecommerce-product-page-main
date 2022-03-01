@@ -41,6 +41,16 @@ export default {
   align-self: center;
 }
 
+.cart {
+  position: relative;
+
+  p {
+    position: absolute;
+    top: -14px;
+    right: -3px;
+  }
+}
+
 .avatar {
   width: 25px;
   height: 25px;
