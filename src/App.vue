@@ -16,5 +16,9 @@ export default {
 </script>
 
 <style lang="scss">
-@import "./src/assets/scss/style.scss";
+@import './src/assets/scss/style.scss';
+
+#app {
+  position: relative;
+}
 </style>

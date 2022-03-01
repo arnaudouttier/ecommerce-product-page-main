@@ -1,6 +1,6 @@
 <template>
-  <div class="navigation-mobile" v-if="this.$store.state.menuSidebar" >
-    <button class="btn navigation-close" @click="toggleMenuSidebar()" >
+  <div class="navigation-mobile" v-if="this.$store.state.menuSidebar">
+    <button class="btn navigation-close" @click="toggleMenuSidebar()">
       <svg width="14" height="15" xmlns="http://www.w3.org/2000/svg">
         <path
           d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z"
@@ -9,7 +9,7 @@
         />
       </svg>
     </button>
-    <nav >
+    <nav>
       <router-link :to="{ name: 'collections' }">Collections</router-link>
       <router-link :to="{ name: 'men' }">Men</router-link>
       <router-link :to="{ name: 'women' }">Women</router-link>
@@ -22,15 +22,15 @@
 <script>
 export default {
   name: "NavMobile",
-  methods : {
-      toggleMenuSidebar (){
-          this.$store.commit("activeMenuSidebar");
-      }
-  }
+  methods: {
+    toggleMenuSidebar() {
+      this.$store.commit("activeMenuSidebar");
+    },
+  },
 };
 </script>
 
-<style scoped lang="scss" >
+<style scoped lang="scss">
 .navigation-mobile {
   position: absolute;
   top: 0;
@@ -39,18 +39,19 @@ export default {
   background: wheat;
   height: 100vh;
   width: 60%;
+  z-index: 999;
 
-  nav{
-      display: flex;
-      flex-direction: column;
+  nav {
+    display: flex;
+    flex-direction: column;
 
-      a{
-          margin-bottom: 30px;
-      }
+    a {
+      margin-bottom: 30px;
+    }
   }
 }
 
-.navigation-close{
-    margin-bottom: 60px;
+.navigation-close {
+  margin-bottom: 60px;
 }
 </style>

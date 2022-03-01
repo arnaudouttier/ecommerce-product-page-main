@@ -43,13 +43,17 @@ export default {
 };
 </script>
 
-<style  lang="scss" scoped>
-@import "./src/assets/scss/style.scss";
+<style lang="scss" scoped>
+@import './src/assets/scss/style.scss';
 
 .shipping-cart {
+  width: 95%;
   background-color: aquamarine;
-  margin: 10px;
+  margin: 2.5%;
   border-radius: 5px;
+  position: absolute;
+  top: 105px;
+  z-index: 800;
 }
 
 .s-cart-header,

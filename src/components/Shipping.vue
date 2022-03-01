@@ -8,6 +8,7 @@
           fill-rule="nonzero"
         />
       </svg>
+      <p>{{ this.$store.state.productQuantity }}</p>
     </div>
     <div class="avatar">
       <img src="@/assets/images/image-avatar.png" alt="avatar" />
