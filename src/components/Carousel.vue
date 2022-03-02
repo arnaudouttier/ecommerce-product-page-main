@@ -5,9 +5,13 @@
       :key="image.id"
       :src="require('@/assets/images/' + image.url)"
       :alt="image.name"
+      width="520"
+      height="520"
+      loading="eager"
+      decoding="sync"
     />
     <div class="carousel-buttons">
-      <button @click="nextImageCaroussel()">
+      <button @click="prevImageCaroussel()">
         <svg width="12" height="18" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M11 1 3 9l8 8"
@@ -18,7 +22,7 @@
           />
         </svg>
       </button>
-      <button @click="prevImageCaroussel()">
+      <button @click="nextImageCaroussel()">
         <svg width="13" height="18" xmlns="http://www.w3.org/2000/svg">
           <path
             d="m2 1 8 8-8 8"

@@ -11,6 +11,18 @@ a {
   cursor: pointer;
 }
 
+.large-btn {
+  color: $white;
+  width: 100%;
+  padding: 20px 120px;
+  text-align: center;
+  border-radius: 4px;
+
+  &.orange {
+    background-color: $orange !important;
+  }
+}
+
 img {
   width: 100%;
   height: auto;

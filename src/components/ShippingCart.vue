@@ -32,7 +32,7 @@
           </svg>
         </div>
       </div>
-      <button class="btn">Checkout</button>
+      <button class="btn large-btn orange">Checkout</button>
     </div>
   </div>
 </template>
@@ -83,15 +83,6 @@ export default {
     .s-cart-description {
       margin-right: 80px;
     }
-  }
-
-  .btn {
-    color: $white;
-    width: 100%;
-    padding: 20px 120px;
-    text-align: center;
-    border-radius: 4px;
-    background-color: $orange;
   }
 }
 </style>

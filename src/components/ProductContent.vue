@@ -21,7 +21,7 @@
       </button>
       <p>{{ this.$store.state.productQuantity }}</p>
       <button @click="productAdd()">+</button>
-      <button>Add to cart</button>
+      <button class="btn large-btn orange">Add to cart</button>
     </div>
   </section>
 </template>
@@ -43,4 +43,31 @@ export default {
 
 <style scoped lang="scss">
 @import './src/assets/scss/style.scss';
+
+.product-presentation {
+  padding: 25px;
+
+  h4 {
+    color: $orange;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  h3 {
+    color: $very_dark_blue;
+    font-size: 35px;
+    margin-bottom: 30px;
+  }
+
+  p {
+    color: $dark_grayish_blue;
+    line-height: 1.7;
+    font-size: 20px;
+  }
+}
+
+.product-price {
+  padding: 0 25px 25px 25px;
+}
 </style>
