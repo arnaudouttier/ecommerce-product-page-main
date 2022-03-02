@@ -105,8 +105,8 @@ export default {
   padding: 0 5%;
 
   button {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     border: 0;
     display: flex;

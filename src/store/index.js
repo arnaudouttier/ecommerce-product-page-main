@@ -17,9 +17,11 @@ export default createStore({
       this.state.activeShippingCart = !this.state.activeShippingCart;
     },
     sousProduct() {
-      this.state.productQuantity = this.state.productQuantity - 1;
-      this.state.productPrice =
-        this.state.productPrice - this.state.productUnitPrice;
+      if (this.state.productQuantity > 0) {
+        this.state.productQuantity = this.state.productQuantity - 1;
+        this.state.productPrice =
+          this.state.productPrice - this.state.productUnitPrice;
+      }
     },
     addProduct() {
       this.state.productQuantity = this.state.productQuantity + 1;

@@ -20,4 +20,8 @@ export default {
 
 <style scoped lang="scss">
 @import './src/assets/scss/style.scss';
+
+.product {
+  margin-bottom: 32px;
+}
 </style>
