@@ -1,7 +1,9 @@
 <template>
   <header id="site-header">
-    <TheNavigation />
-    <Logo />
+    <div class="logo-navigation">
+      <TheNavigation />
+      <Logo />
+    </div>
     <Shipping />
   </header>
   <ShippingCart />
@@ -28,7 +30,13 @@ export default {
 #site-header {
   height: 40px;
   position: relative;
-  padding: 32px 24px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo-navigation {
+  height: inherit;
   display: flex;
   align-items: center;
 }

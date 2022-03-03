@@ -44,11 +44,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import './src/assets/scss/style.scss';
+@import "./src/assets/scss/style.scss";
 
 .shipping-cart {
   width: 95%;
-  background-color: aquamarine;
+  background-color: $white;
   margin: 2.5%;
   border-radius: 5px;
   position: absolute;
@@ -62,10 +62,29 @@ export default {
 }
 
 .s-cart-header {
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid $light_grayish_blue;
 }
 
 .s-cart-content {
+  .s-cart-featured,
+  .s-cart-trash {
+    flex: 1;
+  }
+
+  .s-cart-description {
+    flex: 4;
+
+    p{
+      color: $dark_grayish_blue;
+      line-height: 1.5;
+    }
+
+    strong{
+      margin-left: 5px;
+      color: $very_dark_blue;
+    }
+  }
+
   .s-cart-details {
     display: flex;
     align-items: center;
@@ -80,8 +99,8 @@ export default {
       }
     }
 
-    .s-cart-description {
-      margin-right: 80px;
+    .s-cart-trash{
+      text-align: right;
     }
   }
 }

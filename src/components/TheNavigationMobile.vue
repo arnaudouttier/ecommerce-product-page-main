@@ -31,12 +31,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "./src/assets/scss/style.scss";
+
 .navigation-mobile {
   position: absolute;
   top: 0;
   left: 0;
-  padding: 20px;
-  background: wheat;
+  padding: 33px 20px 20px 20px;
+  background: $white;
   height: 100vh;
   width: 60%;
   z-index: 999;
@@ -44,8 +46,10 @@ export default {
   nav {
     display: flex;
     flex-direction: column;
+    font-size: 18px;
 
     a {
+      font-weight: 700;
       margin-bottom: 30px;
     }
   }

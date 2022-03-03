@@ -18,17 +18,17 @@
       <router-link :to="{ name: 'about' }">About</router-link>
       <router-link :to="{ name: 'contact' }">Contact</router-link>
     </nav>
-    <NavMobile v-if="this.$store.state.menuSidebar" />
+    <TheNavigationMobile v-if="this.$store.state.menuSidebar" />
   </div>
 </template>
 
 <script>
-import NavMobile from "@/components/NavMobile.vue";
+import TheNavigationMobile from "@/components/TheNavigationMobile.vue";
 
 export default {
   name: "TheNavigation",
   components: {
-    NavMobile,
+    TheNavigationMobile,
   },
   methods: {
     toggleMenuSidebar() {

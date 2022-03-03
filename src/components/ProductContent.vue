@@ -30,7 +30,7 @@
             fill-rule="nonzero"
           />
         </svg>
-        <button class="btn large-btn orange">Add to cart</button>
+        <button class="btn large-btn orange" @click="addToCart()">Add to cart</button>
       </div>
     </div>
   </section>
@@ -48,6 +48,11 @@ export default {
       this.$store.commit("addProduct");
       this.$store.dispatch("discountPrice");
     },
+    addToCart(){
+      const currentCart = [{
+          
+      }] 
+    }
   },
 };
 </script>
@@ -56,25 +61,26 @@ export default {
 @import './src/assets/scss/style.scss';
 
 .product-presentation {
-  padding: 25px;
+  padding: 25px 25px 10px 25px;
 
   h4 {
     color: $orange;
-    margin-bottom: 30px;
+    margin-bottom: 18px;
     text-transform: uppercase;
     letter-spacing: 2px;
+    font-size: 12px;
   }
 
   h3 {
     color: $very_dark_blue;
-    font-size: 35px;
-    margin-bottom: 30px;
+    font-size: 30px;
+    margin-bottom: 20px;
   }
 
   p {
     color: $dark_grayish_blue;
     line-height: 1.7;
-    font-size: 20px;
+    font-size: 16px;
   }
 }
 
@@ -84,7 +90,7 @@ export default {
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(3, 1fr);
   grid-column-gap: 0px;
-  grid-row-gap: 25px;
+  grid-row-gap: 18px;
 }
 
 .discount-price {
@@ -153,9 +159,9 @@ export default {
 
   svg {
     position: absolute;
-    top: 32%;
+    top: 27%;
     transform-origin: bottom;
-    left: 30%;
+    left: 27%;
 
     path {
       fill: $white;

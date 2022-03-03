@@ -28,11 +28,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "./src/assets/scss/style.scss";
+
 .shipping {
+  height: inherit;
   display: flex;
-  position: absolute;
-  right: 32px;
-  top: 40px;
+  align-items: center;
 }
 
 .cart,
@@ -45,15 +46,21 @@ export default {
   position: relative;
 
   p {
+    color: $white;
     position: absolute;
-    top: -14px;
-    right: -3px;
+    top: -8px;
+    right: -10px;
+    padding: 2px 8px;
+    background: $orange;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 700;
   }
 }
 
 .avatar {
   width: 25px;
-  height: 25px;
+  height: 32px;
   margin-left: 20px;
 }
 </style>
