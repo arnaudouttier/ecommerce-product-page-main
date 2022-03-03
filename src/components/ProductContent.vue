@@ -30,7 +30,7 @@
             fill-rule="nonzero"
           />
         </svg>
-        <button class="btn large-btn orange" @click="addToCart()">Add to cart</button>
+        <button class="btn large-btn orange">Add to cart</button>
       </div>
     </div>
   </section>
@@ -48,17 +48,12 @@ export default {
       this.$store.commit("addProduct");
       this.$store.dispatch("discountPrice");
     },
-    addToCart(){
-      const currentCart = [{
-          
-      }] 
-    }
   },
 };
 </script>
 
 <style scoped lang="scss">
-@import './src/assets/scss/style.scss';
+@import "./src/assets/scss/style.scss";
 
 .product-presentation {
   padding: 25px 25px 10px 25px;
@@ -122,7 +117,7 @@ export default {
   p {
     position: relative;
     &::after {
-      content: ' ';
+      content: " ";
       position: absolute;
       top: 50%;
       left: 0;
