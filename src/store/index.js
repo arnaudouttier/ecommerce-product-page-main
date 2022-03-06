@@ -1,38 +1,45 @@
 import { createStore } from "vuex";
+import shop from "@/api/shop";
 
 export default createStore({
+
   state: {
-    menuSidebar: false,
-    activeShippingCart: false,
-    productQuantity: 0,
-    productPrice: 0,
-    productUnitPrice: 250,
-    productSalePrice: 0,
+    products: [],
   },
+
+  getters: {
+    availableProducts(state) {
+      return state.products.filter((product) => product.inventory > 0);
+    },
+
+    productIsInStock() {
+      return (product) => {
+        return product.inventory > 0;
+      };
+    },
+  },
+
   mutations: {
-    activeMenuSidebar() {
-      this.state.menuSidebar = !this.state.menuSidebar;
+    setProducts(state, products) {
+      // update products
+      state.products = products;
     },
-    activeShCart() {
-      this.state.activeShippingCart = !this.state.activeShippingCart;
-    },
-    sousProduct() {
-      if (this.state.productQuantity > 0) {
-        this.state.productQuantity = this.state.productQuantity - 1;
-        this.state.productPrice =
-          this.state.productPrice - this.state.productUnitPrice;
-      }
-    },
-    addProduct() {
-      this.state.productQuantity = this.state.productQuantity + 1;
-      this.state.productPrice =
-        this.state.productUnitPrice * this.state.productQuantity;
+
+    decrementProductInventory(state, product) {
+      product.inventory--;
     },
   },
+
   actions: {
-    discountPrice() {
-      this.state.productSalePrice = this.state.productPrice * 0.5;
+    fetchProducts({ commit }) {
+      return new Promise((resolve) => {
+        // make the call
+        // call setProducts mutation
+        shop.getProducts((products) => {
+          commit("setProducts", products);
+          resolve();
+        });
+      });
     },
   },
-  modules: {},
 });

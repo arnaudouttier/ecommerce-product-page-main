@@ -40,31 +40,15 @@
 <script>
 export default {
   name: "Carousel",
+  props: {
+    product: {
+      type: Object,
+    },
+  },
   data() {
     return {
-      images: [
-        {
-          id: 1,
-          url: "image-product-1.jpg",
-          name: "product 1",
-        },
-        {
-          id: 2,
-          url: "image-product-2.jpg",
-          name: "product 2",
-        },
-        {
-          id: 3,
-          url: "image-product-3.jpg",
-          name: "product 3",
-        },
-        {
-          id: 4,
-          url: "image-product-4.jpg",
-          name: "product 4",
-        },
-      ],
       currentImageId: 1,
+      productId: Number,
     };
   },
   methods: {
@@ -80,9 +64,13 @@ export default {
     },
   },
   computed: {
+    productsId() {
+      return this.$store.state.products.id;
+    },
+
     currentImageCarousel() {
-      return this.images.filter((image) => {
-        return image.id == this.currentImageId;
+      return this.product.filter((p) => {
+        return p.id == this.productsId;
       });
     },
   },
@@ -90,7 +78,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import './src/assets/scss/style.scss';
+@import "./src/assets/scss/style.scss";
 
 .carousel {
   position: relative;

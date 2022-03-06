@@ -1,6 +1,6 @@
 <template>
   <section class="product-header">
-    <Carousel />
+    <Carousel :product="product" />
   </section>
 </template>
 
@@ -12,9 +12,14 @@ export default {
   components: {
     Carousel,
   },
+  props: {
+    product: {
+      type: Object,
+    },
+  },
 };
 </script>
 
 <style scoped lang="scss">
-@import './src/assets/scss/style.scss';
+@import "./src/assets/scss/style.scss";
 </style>

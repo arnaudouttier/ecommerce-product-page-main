@@ -1,7 +1,7 @@
 <template>
-  <section class="product">
-    <Productheader />
-    <ProductContent />
+  <section class="product" v-for="product in products" :key="product.id">
+    <Productheader :product="product" />
+    <ProductContent :product="product" />
   </section>
 </template>
 
@@ -15,11 +15,19 @@ export default {
     Productheader,
     ProductContent,
   },
+  computed: {
+    products() {
+      return this.$store.getters.availableProducts;
+    },
+  },
+  created() {
+    this.$store.dispatch("fetchProducts");
+  },
 };
 </script>
 
 <style scoped lang="scss">
-@import './src/assets/scss/style.scss';
+@import "./src/assets/scss/style.scss";
 
 .product {
   margin-bottom: 32px;

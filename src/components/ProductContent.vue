@@ -1,25 +1,26 @@
 <template>
-  <section class="product-content">
+  <section
+    class="product-content"
+    v-for="product in products"
+    :key="product.id"
+  >
+    {{ product.title }}
     <div class="product-presentation">
-      <h4>Sneaker Company</h4>
-      <h3>Fall Limited Edition Sneakers</h3>
-      <p>
-        These low-profile sneakers are your perfect casual wear companion.
-        Featuring a durable rubber outer sole, they’ll withstand everything the
-        weather can offer.
-      </p>
+      <h4>{{ product.category }}</h4>
+      <h3>{{ product.title }}</h3>
+      <p>{{ product.description }}</p>
     </div>
     <div class="product-manage">
       <div class="discount-price">
-        <h3>${{ this.$store.state.productSalePrice }}.00</h3>
+        <h3>{{ product.title }}</h3>
         <p>50%</p>
       </div>
       <div class="unit-price">
-        <p>${{ this.$store.state.productPrice }}.00</p>
+        <p>{{ product.price }}</p>
       </div>
       <div class="product-quantity">
         <button class="btn" @click="productSous()">-</button>
-        <p>{{ this.$store.state.productQuantity }}</p>
+        <p>{{ product.price }}</p>
         <button class="btn" @click="productAdd()">+</button>
       </div>
       <div class="add-to-cart">
@@ -39,6 +40,11 @@
 <script>
 export default {
   name: "ProductContent",
+  props: {
+    product: {
+      type: Object,
+    },
+  },
   methods: {
     productSous() {
       this.$store.commit("sousProduct");
@@ -48,6 +54,15 @@ export default {
       this.$store.commit("addProduct");
       this.$store.dispatch("discountPrice");
     },
+  },
+
+  computed: {
+    products() {
+      return this.$store.getters.availableProducts;
+    },
+  },
+  created() {
+    this.$store.dispatch("fetchProducts");
   },
 };
 </script>
