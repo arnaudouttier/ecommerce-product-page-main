@@ -1,8 +1,8 @@
 <template>
-  <section class="product" v-for="product in products" :key="product.id">
-    <Productheader :product="product" />
-    <ProductContent :product="product" />
-  </section>
+  <div class="product">
+    <Productheader />
+    <ProductContent />
+  </div>
 </template>
 
 <script>
@@ -27,7 +27,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "./src/assets/scss/style.scss";
+@import './src/assets/scss/style.scss';
 
 .product {
   margin-bottom: 32px;

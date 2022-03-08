@@ -2,7 +2,6 @@ import { createStore } from "vuex";
 import shop from "@/api/shop";
 
 export default createStore({
-
   state: {
     products: [],
   },

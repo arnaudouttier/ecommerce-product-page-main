@@ -14,7 +14,7 @@ const _products = [
       "image-product-2.jpg",
       "image-product-3.jpg",
       "image-product-4.jpg",
-    ]
+    ],
   },
 ];
 

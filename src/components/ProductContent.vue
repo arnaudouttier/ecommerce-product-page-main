@@ -4,7 +4,6 @@
     v-for="product in products"
     :key="product.id"
   >
-    {{ product.title }}
     <div class="product-presentation">
       <h4>{{ product.category }}</h4>
       <h3>{{ product.title }}</h3>
@@ -68,7 +67,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "./src/assets/scss/style.scss";
+@import './src/assets/scss/style.scss';
 
 .product-presentation {
   padding: 25px 25px 10px 25px;
@@ -132,7 +131,7 @@ export default {
   p {
     position: relative;
     &::after {
-      content: " ";
+      content: ' ';
       position: absolute;
       top: 50%;
       left: 0;

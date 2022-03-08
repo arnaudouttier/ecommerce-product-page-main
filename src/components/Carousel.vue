@@ -1,10 +1,9 @@
 <template>
   <section class="carousel">
     <img
-      v-for="image in currentImageCarousel"
-      :key="image.id"
-      :src="require('@/assets/images/' + image.url)"
-      :alt="image.name"
+      v-for="(imae, index) in products"
+      :key="index"
+      :src="require('@/assets/images/' + imae.imageUrl[currentImageId])"
       width="520"
       height="520"
       loading="eager"
@@ -40,45 +39,33 @@
 <script>
 export default {
   name: "Carousel",
-  props: {
-    product: {
-      type: Object,
-    },
-  },
   data() {
     return {
-      currentImageId: 1,
-      productId: Number,
+      currentImageId: 0,
     };
   },
   methods: {
     nextImageCaroussel() {
-      if (this.currentImageId < this.images.length) {
+      if (this.currentImageId < 3) {
         this.currentImageId = this.currentImageId + 1;
       }
     },
     prevImageCaroussel() {
-      if (this.currentImageId > 1) {
+      if (this.currentImageId > 0) {
         this.currentImageId = this.currentImageId - 1;
       }
     },
   },
   computed: {
-    productsId() {
-      return this.$store.state.products.id;
-    },
-
-    currentImageCarousel() {
-      return this.product.filter((p) => {
-        return p.id == this.productsId;
-      });
+    products() {
+      return this.$store.getters.availableProducts;
     },
   },
 };
 </script>
 
 <style scoped lang="scss">
-@import "./src/assets/scss/style.scss";
+@import './src/assets/scss/style.scss';
 
 .carousel {
   position: relative;
