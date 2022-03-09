@@ -11,16 +11,17 @@
     </div>
     <div class="product-manage">
       <div class="discount-price">
-        <h3>{{ product.title }}</h3>
+        <h3>{{ product.discountPrice }}</h3>
         <p>50%</p>
       </div>
       <div class="unit-price">
-        <p>{{ product.price }}</p>
+        <p>{{ product.unitPrice }}</p>
       </div>
       <div class="product-quantity">
         <button class="btn" @click="productSous()">-</button>
-        <p>{{ product.price }}</p>
-        <button class="btn" @click="productAdd()">+</button>
+        {{ product.quantity }}
+        <p>{{ productQuantity }}</p>
+        <button class="btn" @click="productQuantity++">+</button>
       </div>
       <div class="add-to-cart">
         <svg width="22" height="20" xmlns="http://www.w3.org/2000/svg">
@@ -30,7 +31,9 @@
             fill-rule="nonzero"
           />
         </svg>
-        <button class="btn large-btn orange">Add to cart</button>
+        <button class="btn large-btn orange" @click="addProductToCart(product)">
+          Add to cart
+        </button>
       </div>
     </div>
   </section>
@@ -39,22 +42,28 @@
 <script>
 export default {
   name: "ProductContent",
-  props: {
-    product: {
-      type: Object,
-    },
+  data() {
+    return {
+      productQuantity: 1,
+    };
   },
   methods: {
     productSous() {
-      this.$store.commit("sousProduct");
-      this.$store.dispatch("discountPrice");
+      if (this.productQuantity > 0) {
+        this.productQuantity--;
+      }
     },
-    productAdd() {
-      this.$store.commit("addProduct");
-      this.$store.dispatch("discountPrice");
+    addProductQuantity() {
+      this.products.forEach((element) => {
+        console.log(element);
+        element.quantity = this.productQuantity;
+      });
+    },
+    addProductToCart(product) {
+      this.addProductQuantity();
+      this.$store.dispatch("addProductToCart", product);
     },
   },
-
   computed: {
     products() {
       return this.$store.getters.availableProducts;
@@ -68,7 +77,6 @@ export default {
 
 <style scoped lang="scss">
 @import './src/assets/scss/style.scss';
-
 .product-presentation {
   padding: 25px 25px 10px 25px;
 
@@ -132,7 +140,7 @@ export default {
     position: relative;
     &::after {
       content: ' ';
-      position: absolute;
+      position: ' ' solute;
       top: 50%;
       left: 0;
       width: 100%;
