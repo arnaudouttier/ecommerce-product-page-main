@@ -1,18 +1,18 @@
 <template>
-  <section class="product" v-for="product in products" :key="product.id">
-    <Productheader :product="product" />
-    <ProductContent :product="product" />
+  <section class="product">
+    <ProductHeader />
+    <ProductContent />
   </section>
 </template>
 
 <script>
-import Productheader from "@/components/Productheader.vue";
+import ProductHeader from "@/components/ProductHeader.vue";
 import ProductContent from "@/components/ProductContent.vue";
 
 export default {
   name: "Product",
   components: {
-    Productheader,
+    ProductHeader,
     ProductContent,
   },
   computed: {

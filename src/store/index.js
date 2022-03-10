@@ -8,8 +8,16 @@ export default createStore({
   },
 
   getters: {
-    availableProducts(state) {
-      return state.products.filter((product) => product.inventory > 0);
+    getProducts(state) {
+      return state.products.find((product) => {
+        return product;
+      })
+    },
+
+    getProductsImage(state) {
+      return state.products.find(product =>{
+        return product.imageUrl
+      })
     },
 
     productIsInStock() {
@@ -41,5 +49,6 @@ export default createStore({
         });
       });
     },
+
   },
 });

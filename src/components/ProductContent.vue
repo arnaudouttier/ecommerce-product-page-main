@@ -4,7 +4,6 @@
     v-for="product in products"
     :key="product.id"
   >
-    {{ product.title }}
     <div class="product-presentation">
       <h4>{{ product.category }}</h4>
       <h3>{{ product.title }}</h3>
@@ -58,7 +57,7 @@ export default {
 
   computed: {
     products() {
-      return this.$store.getters.availableProducts;
+      return this.$store.getters.getProducts;
     },
   },
   created() {

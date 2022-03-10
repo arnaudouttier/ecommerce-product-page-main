@@ -1,6 +1,6 @@
 <template>
   <section class="product-header">
-    <Carousel :product="product" />
+    <Carousel />
   </section>
 </template>
 
@@ -8,14 +8,9 @@
 import Carousel from "@/components/Carousel.vue";
 
 export default {
-  name: "Productheader",
+  name: "ProductHeader",
   components: {
     Carousel,
-  },
-  props: {
-    product: {
-      type: Object,
-    },
   },
 };
 </script>
