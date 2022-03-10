@@ -5,16 +5,19 @@ const _products = [
   {
     id: 0,
     title: "iPad 4 Mini",
-    presentation:
+    category: "sneakers company",
+    description:
       "These low-profile sneakers are your perfect casual wear companion . Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
-    price: 125.0,
+    discountPrice: 125.0,
+    unitPrice: 250.0,
+    quantity: 1,
     inventory: 1,
     imageUrl: [
-      { id: 0, src: "image-product-1.jpg" },
-      { id: 1, src: "image-product-2.jpg" },
-      { id: 2, src: "image-product-3.jpg" },
-      { id: 3, src: "image-product-4.jpg" },
-    ]
+      "image-product-1.jpg",
+      "image-product-2.jpg",
+      "image-product-3.jpg",
+      "image-product-4.jpg",
+    ],
   },
 ];
 
