@@ -1,8 +1,15 @@
 <template>
+<<<<<<< HEAD
   <section class="product">
     <ProductHeader />
     <ProductContent />
   </section>
+=======
+  <div class="product">
+    <Productheader />
+    <ProductContent />
+  </div>
+>>>>>>> 3f6672bd498a1ebb39d0377d36daedb677dde0d3
 </template>
 
 <script>
@@ -27,7 +34,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "./src/assets/scss/style.scss";
+@import './src/assets/scss/style.scss';
 
 .product {
   margin-bottom: 32px;
