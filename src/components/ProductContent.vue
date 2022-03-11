@@ -154,7 +154,7 @@ export default {
     position: relative;
     &::after {
       content: " ";
-      position: " " solute;
+      position: absolute;
       top: 50%;
       left: 0;
       width: 100%;

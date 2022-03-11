@@ -16,12 +16,13 @@ export default createStore({
       });
     },
 
-    cartProducts(state) {
+    cartProducts(state, getters) {
       return state.cart.map((cartItem) => {
         return {
           id: cartItem.id,
           price: cartItem.price,
           quantity: cartItem.quantity,
+          discountProductPrice: getters.discountCartTotal,
         };
       });
     },
@@ -72,14 +73,18 @@ export default createStore({
 
     cartQuantity(state, product) {
       return state.cart.forEach((c) => {
-        console.log(c.quantity);
-        console.log(product.quantity);
         c.quantity = product.quantity;
       });
     },
 
+    cleanCart(state) {
+      return state.products.forEach((c) => {
+        c.quantity = 0;
+      });
+    },
+
     emptyCart(state) {
-      state.cart = [];
+      return (state.cart = []);
     },
 
     toggleSidebar(state) {
@@ -116,6 +121,14 @@ export default createStore({
 
     deCrementProductQuantity({ commit }, product) {
       commit("deCrementProductQuantity", product);
+    },
+
+    cleanCart({ commit }) {
+      commit("cleanCart");
+    },
+
+    emptyCart({ commit }) {
+      commit("emptyCart");
     },
 
     toggleSidebar({ commit }) {
