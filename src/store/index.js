@@ -5,26 +5,17 @@ export default createStore({
   state: {
     products: [],
     cart: [],
+    activeSidebar: false,
+    activeCart: false,
   },
 
   getters: {
     getProducts(state) {
-      return state.products.find((product) => {
+      return state.products.map((product) => {
         return product;
-      })
+      });
     },
 
-    getProductsImage(state) {
-      return state.products.find(product =>{
-        return product.imageUrl
-      })
-    },
-
-    productIsInStock() {
-      return (product) => {
-        return product.inventory > 0;
-      };
-    },
     cartProducts(state) {
       return state.cart.map((cartItem) => {
         return {
@@ -35,24 +26,31 @@ export default createStore({
       });
     },
 
-    cartTotal(state, getters) {
-      return getters.cartProducts.reduce(
-        (total, product) => total + product.price * product.quantity,
+    cartTotal(state) {
+      return state.products.reduce(
+        (total, product) => total + product.unitPrice * product.quantity,
         0
       );
     },
 
-    discountCartTotal(state, getters) {
-      return getters.cartProducts.reduce(
-        (total, product) => total + product.price * product.quantity * 0.5,
+    discountCartTotal(state) {
+      return state.products.reduce(
+        (total, product) => total + product.unitPrice * product.quantity * 0.5,
         0
       );
+    },
+
+    getActiveSidebar(state) {
+      return state.activeSidebar;
+    },
+
+    getActiveCart(state) {
+      return state.activeCart;
     },
   },
 
   mutations: {
     setProducts(state, products) {
-      // update products
       state.products = products;
     },
 
@@ -64,20 +62,38 @@ export default createStore({
       });
     },
 
-    incrementItemQuantity(state, cartItem) {
-      return cartItem.quantity;
+    incrementProductQuantity(state, product) {
+      return product.quantity++;
+    },
+
+    deCrementProductQuantity(state, product) {
+      return product.quantity--;
+    },
+
+    cartQuantity(state, product) {
+      return state.cart.forEach((c) => {
+        console.log(c.quantity);
+        console.log(product.quantity);
+        c.quantity = product.quantity;
+      });
     },
 
     emptyCart(state) {
       state.cart = [];
+    },
+
+    toggleSidebar(state) {
+      state.activeSidebar = !state.activeSidebar;
+    },
+
+    toggleCart(state) {
+      state.activeCart = !state.activeCart;
     },
   },
 
   actions: {
     fetchProducts({ commit }) {
       return new Promise((resolve) => {
-        // make the call
-        // call setProducts mutation
         shop.getProducts((products) => {
           commit("setProducts", products);
           resolve();
@@ -90,8 +106,24 @@ export default createStore({
       if (!cartItem) {
         commit("pushProductToCart", product);
       } else {
-        commit("incrementItemQuantity", cartItem);
+        commit("cartQuantity", product);
       }
+    },
+
+    incrementProductQuantity({ commit }, product) {
+      commit("incrementProductQuantity", product);
+    },
+
+    deCrementProductQuantity({ commit }, product) {
+      commit("deCrementProductQuantity", product);
+    },
+
+    toggleSidebar({ commit }) {
+      commit("toggleSidebar");
+    },
+
+    activeCart({ commit }) {
+      commit("toggleCart");
     },
   },
 });

@@ -1,18 +1,9 @@
 <template>
-<<<<<<< HEAD
-  <ul>
-    <li v-for="(image, index) in productsImg" :key="index">
-      <p>
-        {{ image }}
-      </p>
-    </li>
-  </ul>
-=======
   <section class="carousel">
     <img
-      v-for="(imae, index) in products"
-      :key="index"
-      :src="require('@/assets/images/' + imae.imageUrl[currentImageId])"
+      v-for="product in products"
+      :key="product.id"
+      :src="require(`@/assets/images/${product.imageUrl[currentImageId]}`)"
       width="520"
       height="520"
       loading="eager"
@@ -43,7 +34,6 @@
       </button>
     </div>
   </section>
->>>>>>> 3f6672bd498a1ebb39d0377d36daedb677dde0d3
 </template>
 
 <script>
@@ -55,22 +45,6 @@ export default {
     };
   },
   methods: {
-<<<<<<< HEAD
-    // nextImageCaroussel() {
-    //   if (this.currentImageId < this.images.length) {
-    //     this.currentImageId = this.currentImageId + 1;
-    //   }
-    // },
-    // prevImageCaroussel() {
-    //   if (this.currentImageId > 1) {
-    //     this.currentImageId = this.currentImageId - 1;
-    //   }
-    // },
-  },
-  computed: {
-    productsImg() {
-      return this.$store.getters.getProductsImage;
-=======
     nextImageCaroussel() {
       if (this.currentImageId < 3) {
         this.currentImageId = this.currentImageId + 1;
@@ -84,15 +58,17 @@ export default {
   },
   computed: {
     products() {
-      return this.$store.getters.availableProducts;
->>>>>>> 3f6672bd498a1ebb39d0377d36daedb677dde0d3
+      return this.$store.getters.getProducts;
     },
+  },
+  created() {
+    this.$store.dispatch("fetchProducts");
   },
 };
 </script>
 
 <style scoped lang="scss">
-@import './src/assets/scss/style.scss';
+@import "./src/assets/scss/style.scss";
 
 .carousel {
   position: relative;

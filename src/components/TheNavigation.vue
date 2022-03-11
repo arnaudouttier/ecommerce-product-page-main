@@ -1,7 +1,7 @@
 <template>
   <div class="navigation">
     <div class="navigation-btn" @click="toggleMenuSidebar()">
-      <button class="btn" >
+      <button class="btn">
         <svg width="16" height="15" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M16 12v3H0v-3h16Zm0-6v3H0V6h16Zm0-6v3H0V0h16Z"
@@ -18,7 +18,7 @@
       <router-link :to="{ name: 'about' }">About</router-link>
       <router-link :to="{ name: 'contact' }">Contact</router-link>
     </nav>
-    <TheNavigationMobile v-if="this.$store.state.menuSidebar" />
+    <TheNavigationMobile v-if="activeSidebar" />
   </div>
 </template>
 
@@ -32,13 +32,18 @@ export default {
   },
   methods: {
     toggleMenuSidebar() {
-      this.$store.commit("activeMenuSidebar");
+      this.$store.dispatch("toggleSidebar");
+    },
+  },
+  computed: {
+    activeSidebar() {
+      return this.$store.getters.getActiveSidebar;
     },
   },
 };
 </script>
 
-<style  lang="scss">
+<style lang="scss">
 .navigation {
   margin-right: 15px;
 }

@@ -11,17 +11,20 @@
     </div>
     <div class="product-manage">
       <div class="discount-price">
-        <h3>{{ product.discountPrice }}</h3>
+        <h3>${{ discountCartTotal }}</h3>
         <p>50%</p>
       </div>
       <div class="unit-price">
-        <p>{{ product.unitPrice }}</p>
+        <p>${{ cartTotal }}</p>
       </div>
       <div class="product-quantity">
-        <button class="btn" @click="productSous()">-</button>
-        {{ product.quantity }}
-        <p>{{ productQuantity }}</p>
-        <button class="btn" @click="productQuantity++">+</button>
+        <button class="btn" @click="deCrementProductQuantity(product)">
+          -
+        </button>
+        <p>{{ product.quantity }}</p>
+        <button class="btn" @click="incrementProductQuantity(product)">
+          +
+        </button>
       </div>
       <div class="add-to-cart">
         <svg width="22" height="20" xmlns="http://www.w3.org/2000/svg">
@@ -53,20 +56,30 @@ export default {
         this.productQuantity--;
       }
     },
-    addProductQuantity() {
-      this.products.forEach((element) => {
-        console.log(element);
-        element.quantity = this.productQuantity;
-      });
+    incrementProductQuantity(product) {
+      this.$store.dispatch("incrementProductQuantity", product);
+    },
+    deCrementProductQuantity(product) {
+      if (product.quantity > 0) {
+        this.$store.dispatch("deCrementProductQuantity", product);
+      }
     },
     addProductToCart(product) {
-      this.addProductQuantity();
       this.$store.dispatch("addProductToCart", product);
     },
   },
   computed: {
     products() {
       return this.$store.getters.getProducts;
+    },
+    productsQuantity() {
+      return this.$store.getters.productsQuantity;
+    },
+    discountCartTotal() {
+      return this.$store.getters.discountCartTotal;
+    },
+    cartTotal() {
+      return this.$store.getters.cartTotal;
     },
   },
   created() {
@@ -76,7 +89,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import './src/assets/scss/style.scss';
+@import "./src/assets/scss/style.scss";
+
 .product-presentation {
   padding: 25px 25px 10px 25px;
 
@@ -139,8 +153,8 @@ export default {
   p {
     position: relative;
     &::after {
-      content: ' ';
-      position: ' ' solute;
+      content: " ";
+      position: " " solute;
       top: 50%;
       left: 0;
       width: 100%;

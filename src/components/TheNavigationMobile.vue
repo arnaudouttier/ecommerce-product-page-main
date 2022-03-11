@@ -1,5 +1,5 @@
 <template>
-  <div class="navigation-mobile" v-if="this.$store.state.menuSidebar">
+  <div class="navigation-mobile" v-if="activeSidebar">
     <button class="btn navigation-close" @click="toggleMenuSidebar()">
       <svg width="14" height="15" xmlns="http://www.w3.org/2000/svg">
         <path
@@ -24,7 +24,12 @@ export default {
   name: "NavMobile",
   methods: {
     toggleMenuSidebar() {
-      this.$store.commit("activeMenuSidebar");
+      this.$store.dispatch("toggleSidebar");
+    },
+  },
+  computed: {
+    activeSidebar() {
+      return this.$store.getters.getActiveSidebar;
     },
   },
 };

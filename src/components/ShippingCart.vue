@@ -1,5 +1,5 @@
 <template>
-  <div class="shipping-cart" v-if="this.$store.state.activeShippingCart">
+  <div class="shipping-cart" v-for="cartItem in cart" :key="cartItem.id">
     <div class="s-cart-header">
       <h3>Cart</h3>
     </div>
@@ -13,7 +13,7 @@
         </div>
         <div class="s-cart-description">
           <p>Autumn Limited Edition...</p>
-          <p>$125.00 x 3 <strong>$375.00</strong></p>
+          <p>$125.00 x {{ cartItem.quantity }} <strong>$375.00</strong></p>
         </div>
         <div class="s-cart-trash">
           <svg
@@ -40,6 +40,14 @@
 <script>
 export default {
   name: "ShippingCart",
+  computed: {
+    activeCart() {
+      return this.$store.getters.getActiveCart;
+    },
+    cart() {
+      return this.$store.getters.cartProducts;
+    },
+  },
 };
 </script>
 
@@ -74,12 +82,12 @@ export default {
   .s-cart-description {
     flex: 4;
 
-    p{
+    p {
       color: $dark_grayish_blue;
       line-height: 1.5;
     }
 
-    strong{
+    strong {
       margin-left: 5px;
       color: $very_dark_blue;
     }
@@ -91,15 +99,15 @@ export default {
     margin-bottom: 25px;
 
     .s-cart-featured {
-      width: 50px;
-      height: 50px;
+      max-width: 50px;
+      max-height: 50px;
       margin-right: 15px;
       img {
         border-radius: 4px;
       }
     }
 
-    .s-cart-trash{
+    .s-cart-trash {
       text-align: right;
     }
   }

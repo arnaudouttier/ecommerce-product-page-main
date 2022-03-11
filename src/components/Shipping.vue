@@ -1,5 +1,5 @@
 <template>
-  <div class="shipping">
+  <div class="shipping" v-for="cartItem in cart" :key="cartItem" >
     <div class="cart" @click="toggleShippingCart()">
       <svg width="22" height="20" xmlns="http://www.w3.org/2000/svg">
         <path
@@ -8,7 +8,7 @@
           fill-rule="nonzero"
         />
       </svg>
-      <p>{{ this.$store.state.productQuantity }}</p>
+      <p>{{cartItem.quantity}}</p>
     </div>
     <div class="avatar">
       <img src="@/assets/images/image-avatar.png" alt="avatar" />
@@ -21,7 +21,12 @@ export default {
   name: "Shipping",
   methods: {
     toggleShippingCart() {
-      this.$store.commit("activeShCart");
+      this.$store.dispatch("activeCart");
+    },
+  },
+  computed: {
+    cart() {
+      return this.$store.getters.cartProducts;
     },
   },
 };
