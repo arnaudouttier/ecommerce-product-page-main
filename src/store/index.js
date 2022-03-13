@@ -78,8 +78,9 @@ export default createStore({
     },
 
     cleanCart(state) {
-      return state.products.forEach((c) => {
+      return state.cart.forEach((c) => {
         c.quantity = 0;
+        c.discountProductPrice = 0;
       });
     },
 
