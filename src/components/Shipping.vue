@@ -10,7 +10,14 @@
       </svg>
       <p v-for="cartItem in cart" :key="cartItem.id">{{ cartItem.quantity }}</p>
     </div>
-    <div class="avatar">
+    <div
+      class="avatar"
+      :class="{ active: activeAvatar }"
+      @click="
+        toggleActiveAvatar();
+        toggleShippingCart();
+      "
+    >
       <img src="@/assets/images/image-avatar.png" alt="avatar" />
     </div>
   </div>
@@ -19,9 +26,17 @@
 <script>
 export default {
   name: "Shipping",
+  data() {
+    return {
+      activeAvatar: false,
+    };
+  },
   methods: {
     toggleShippingCart() {
       this.$store.dispatch("activeCart");
+    },
+    toggleActiveAvatar() {
+      this.activeAvatar = !this.activeAvatar;
     },
   },
   computed: {
@@ -64,8 +79,24 @@ export default {
 }
 
 .avatar {
-  width: 25px;
-  height: 32px;
+  max-width: 25px;
+  max-height: 32px;
   margin-left: 20px;
+}
+
+@media (min-width: 1200px) {
+  .avatar {
+    max-width: 50px;
+    max-height: 50px;
+    margin-left: 45px;
+    border: 2px solid $light_grayish_blue;
+    border-radius: 50%;
+    transition: 0.5s ease border;
+
+    &.active {
+      border-radius: 50%;
+      border: 2px solid $orange;
+    }
+  }
 }
 </style>

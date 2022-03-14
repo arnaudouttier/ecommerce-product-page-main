@@ -44,10 +44,36 @@ export default {
 </script>
 
 <style lang="scss">
+@import "./src/assets/scss/style.scss";
+
 .navigation {
   margin-right: 15px;
+  color: $dark_grayish_blue;
 }
 .site-navigation {
   display: none;
+}
+
+@media (min-width: 1200px) {
+  .navigation,
+  .site-navigation {
+    height: inherit;
+    display: flex;
+
+    a {
+      height: inherit;
+      display: flex;
+      align-items: center;
+      margin-right: 30px;
+
+      &:hover {
+        border-bottom: 2px solid $orange;
+      }
+    }
+  }
+
+  .navigation-btn {
+    display: none;
+  }
 }
 </style>

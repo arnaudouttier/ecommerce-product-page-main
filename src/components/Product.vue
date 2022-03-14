@@ -21,6 +21,8 @@ export default {
 @import "./src/assets/scss/style.scss";
 
 .product {
+  max-width: 1100px;
+  margin: 0 auto;
   margin-bottom: 32px;
 }
 </style>

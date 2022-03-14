@@ -27,7 +27,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "./src/assets/scss/style.scss";
+
 #site-header {
+  max-width: 1200px;
+  margin: 0 auto;
   height: 40px;
   position: relative;
   padding: 20px;
@@ -39,5 +43,21 @@ export default {
   height: inherit;
   display: flex;
   align-items: center;
+}
+
+@media (min-width: 1200px) {
+  #site-header {
+    height: 120px;
+    padding: 0;
+    margin-bottom: 90px;
+    border-bottom: 1px solid $light_grayish_blue;
+  }
+
+  .logo-navigation {
+    .navigation {
+      order: 2;
+      margin-left: 60px;
+    }
+  }
 }
 </style>
