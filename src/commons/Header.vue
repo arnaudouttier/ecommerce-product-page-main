@@ -32,9 +32,8 @@ export default {
 #site-header {
   max-width: 1200px;
   margin: 0 auto;
-  height: 40px;
   position: relative;
-  padding: 20px;
+  padding: 25px 25px 30px 25px;
   display: flex;
   justify-content: space-between;
 }
@@ -48,6 +47,7 @@ export default {
 @media (min-width: 1200px) {
   #site-header {
     height: 120px;
+
     padding: 0;
     margin-bottom: 90px;
     border-bottom: 1px solid $light_grayish_blue;

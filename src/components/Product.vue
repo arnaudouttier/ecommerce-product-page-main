@@ -25,4 +25,11 @@ export default {
   margin: 0 auto;
   margin-bottom: 32px;
 }
+
+@media (min-width: 1200px) {
+  .product {
+    display: flex;
+    column-gap: 120px;
+  }
+}
 </style>

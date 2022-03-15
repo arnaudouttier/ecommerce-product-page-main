@@ -1,8 +1,6 @@
 <template>
-  <section class="carousel">
+  <section class="carousel" v-for="product in products" :key="product.id">
     <img
-      v-for="product in products"
-      :key="product.id"
       :src="require(`@/assets/images/${product.imageUrl[currentImageId]}`)"
       width="520"
       height="520"
@@ -32,6 +30,21 @@
           />
         </svg>
       </button>
+    </div>
+    <div class="carousel-thumbnail">
+      <ul>
+        <li>
+          <img
+            v-for="imaeTumbnail in product.imageUrl"
+            :key="imaeTumbnail.id"
+            :src="require(`@/assets/images/${imaeTumbnail}`)"
+            width="90"
+            height="90"
+            loading="eager"
+            decoding="sync"
+          />
+        </li>
+      </ul>
     </div>
   </section>
 </template>
@@ -99,6 +112,29 @@ export default {
           stroke: $orange;
         }
       }
+    }
+  }
+}
+
+.carousel-thumbnail {
+  display: none;
+}
+
+@media (min-width: 1200px) {
+  .carousel {
+    img {
+      border-radius: 20px;
+    }
+  }
+
+  .carousel-buttons {
+    display: none;
+  }
+
+  .carousel-thumbnail {
+    img {
+      max-width: 90px;
+      max-height: 90px;
     }
   }
 }

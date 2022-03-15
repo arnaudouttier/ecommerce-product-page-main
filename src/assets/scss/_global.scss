@@ -14,7 +14,7 @@ a {
 .large-btn {
   color: $white;
   width: 100%;
-  padding: 20px 120px;
+  padding: 20px;
   text-align: center;
   border-radius: 10px;
   font-weight: 700;
@@ -38,4 +38,12 @@ h5,
 p {
   margin: 0;
   padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  list-style-type: none;
 }

@@ -20,7 +20,7 @@
               <p>Autumn Limited Edition...</p>
               <p>
                 $125 x {{ cartItem.quantity }}
-                <strong>${{ cartItem.discountProductPrice }}</strong>
+                <strong>${{ cartItem.discountProductPrice }}.00</strong>
               </p>
             </div>
             <div class="s-cart-trash" @click="cleanCart()">

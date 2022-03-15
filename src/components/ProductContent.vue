@@ -10,12 +10,14 @@
       <p>{{ product.description }}</p>
     </div>
     <div class="product-manage">
-      <div class="discount-price">
-        <h3>${{ discountCartTotal }}</h3>
-        <p>50%</p>
-      </div>
-      <div class="unit-price">
-        <p>${{ cartTotal }}</p>
+      <div class="product-price">
+        <div class="discount-price">
+          <h3>${{ discountCartTotal }}.00</h3>
+          <p>50%</p>
+        </div>
+        <div class="unit-price">
+          <p>${{ cartTotal }}.00</p>
+        </div>
       </div>
       <div class="product-quantity">
         <button class="btn" @click="deCrementProductQuantity(product)">
@@ -124,42 +126,50 @@ export default {
   grid-row-gap: 18px;
 }
 
-.discount-price {
-  grid-area: 1 / 1 / 2 / 2;
+.product-price {
+  min-width: 200px;
+  grid-area: 1 / 1 / 2 / 3;
   display: flex;
   align-items: center;
-  h3 {
-    font-size: 30px;
-    margin-right: 20px;
-    color: $very_dark_blue;
-  }
-  p {
-    color: $orange;
-    padding: 10px;
-    background-color: $pale_orange;
-    border-radius: 10px;
-    font-weight: 700;
-  }
-}
-.unit-price {
-  color: $grayish_blue;
-  font-size: 20px;
-  font-weight: 700;
-  grid-area: 1 / 2 / 2 / 3;
-  display: flex;
-  align-items: center;
-  justify-content: end;
+  justify-content: space-between;
 
-  p {
-    position: relative;
-    &::after {
-      content: " ";
-      position: absolute;
-      top: 50%;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background-color: $grayish_blue;
+  .discount-price {
+    display: flex;
+
+    h3 {
+      font-size: 30px;
+      margin-right: 20px;
+      color: $very_dark_blue;
+    }
+    p {
+      color: $orange;
+      padding: 6px;
+      background-color: $pale_orange;
+      line-height: normal;
+      border-radius: 10px;
+      font-weight: 700;
+    }
+  }
+
+  .unit-price {
+    color: $grayish_blue;
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+
+    p {
+      position: relative;
+      &::after {
+        content: " ";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: $grayish_blue;
+      }
     }
   }
 }
@@ -199,6 +209,36 @@ export default {
         fill: $white;
       }
     }
+  }
+}
+
+@media (min-width: 1200px) {
+  .product-content {
+    padding: 60px 0 80px 0;
+  }
+
+  .product-manage {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    padding: 25px;
+  }
+
+  .product-price {
+    grid-area: 1 / 1 / 2 / 2;
+    display: block;
+
+    .unit-price {
+      display: inline-block;
+      margin-top: 10px;
+    }
+  }
+  .product-quantity {
+    grid-area: 2 / 1 / 3 / 2;
+    margin-right: 15px;
+    padding: 13px;
+  }
+  .add-to-cart {
+    grid-area: 2 / 2 / 3 / 4;
   }
 }
 </style>
