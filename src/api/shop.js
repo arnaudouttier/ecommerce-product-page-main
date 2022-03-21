@@ -12,17 +12,27 @@ const _products = [
     unitPrice: 250.0,
     quantity: 0,
     inventory: 1,
-    imageUrl: [
-      "image-product-1.jpg",
-      "image-product-2.jpg",
-      "image-product-3.jpg",
-      "image-product-4.jpg",
-    ],
-    imageThumbnailUrl: [
-      "image-product-1-thumbnail.jpg",
-      "image-product-2-thumbnail.jpg",
-      "image-product-3-thumbnail.jpg",
-      "image-product-4-thumbnail.jpg",
+    images: [
+      {
+        id: 0,
+        imageUrl: "image-product-1.jpg",
+        imageThumbnailUrl: "image-product-1-thumbnail.jpg",
+      },
+      {
+        id: 1,
+        imageUrl: "image-product-2.jpg",
+        imageThumbnailUrl: "image-product-2-thumbnail.jpg",
+      },
+      {
+        id: 2,
+        imageUrl: "image-product-3.jpg",
+        imageThumbnailUrl: "image-product-3-thumbnail.jpg",
+      },
+      {
+        id: 3,
+        imageUrl: "image-product-4.jpg",
+        imageThumbnailUrl: "image-product-4-thumbnail.jpg",
+      },
     ],
   },
 ];

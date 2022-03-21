@@ -16,6 +16,12 @@ export default createStore({
       });
     },
 
+    getProductsImage(state) {
+      return state.products.map((product) => {
+        return product.images;
+      });
+    },
+
     cartProducts(state, getters) {
       return state.cart.map((cartItem) => {
         return {
