@@ -16,6 +16,21 @@ export default createStore({
       });
     },
 
+    etAllProductImae(state) {
+      return state.products.map((productImae) => {
+        console.log(productImae.images);
+        return productImae.images;
+      });
+    },
+
+    etProductImae: (state) => (id) => {
+      const ar = state.products.map((productImae) => {
+        const imafind = productImae.images.find((pi) => pi.id === id);
+        return imafind;
+      });
+      return ar;
+    },
+
     cartProducts(state, getters) {
       return state.cart.map((cartItem) => {
         return {

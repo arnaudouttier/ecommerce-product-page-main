@@ -1,7 +1,11 @@
 <template>
-  <section class="carousel" v-for="product in products" :key="product.id">
+  <section
+    class="carousel"
+    v-for="imaesProduct in etAllProductImae"
+    :key="imaesProduct.id"
+  >
     <img
-      :src="require(`@/assets/images/${product.imageUrl[currentImageId]}`)"
+      :src="require(`@/assets/images/${imaesProduct[currentImageId].imageUrl}`)"
       width="520"
       height="520"
       loading="eager"
@@ -35,9 +39,10 @@
       <ul>
         <li>
           <img
-            v-for="imaeTumbnail in product.imageUrl"
-            :key="imaeTumbnail.id"
-            :src="require(`@/assets/images/${imaeTumbnail}`)"
+            @click="etProductImae(currentImageId)"
+            :src="
+              require(`@/assets/images/${imaesProduct[0].imageThumbnailUrl}`)
+            "
             width="90"
             height="90"
             loading="eager"
@@ -54,24 +59,32 @@ export default {
   name: "Carousel",
   data() {
     return {
-      currentImageId: 0,
+      currentImageId: 1,
     };
   },
   methods: {
     nextImageCaroussel() {
       if (this.currentImageId < 3) {
         this.currentImageId = this.currentImageId + 1;
+        this.etProductImae(this.currentImageId);
       }
     },
     prevImageCaroussel() {
       if (this.currentImageId > 0) {
         this.currentImageId = this.currentImageId - 1;
+        this.etProductImae(this.currentImageId);
       }
     },
   },
   computed: {
     products() {
       return this.$store.getters.getProducts;
+    },
+    etAllProductImae() {
+      return this.$store.getters.etAllProductImae;
+    },
+    etProductImae(crImae) {
+      return this.$store.getters.etProductImae(crImae);
     },
   },
   created() {
@@ -132,6 +145,7 @@ export default {
   }
 
   .carousel-thumbnail {
+    display: block;
     img {
       max-width: 90px;
       max-height: 90px;
