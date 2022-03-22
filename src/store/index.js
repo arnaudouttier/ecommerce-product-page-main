@@ -7,6 +7,7 @@ export default createStore({
     cart: [],
     activeSidebar: false,
     activeCart: false,
+    activeModal: false,
   },
 
   getters: {
@@ -53,6 +54,10 @@ export default createStore({
 
     getActiveCart(state) {
       return state.activeCart;
+    },
+
+    getActiveModal(state) {
+      return state.activeModal;
     },
   },
 
@@ -101,6 +106,10 @@ export default createStore({
     toggleCart(state) {
       state.activeCart = !state.activeCart;
     },
+
+    activeModal(state) {
+      state.activeModal = !state.activeModal;
+    },
   },
 
   actions: {
@@ -144,6 +153,10 @@ export default createStore({
 
     activeCart({ commit }) {
       commit("toggleCart");
+    },
+
+    sowModal({ commit }) {
+      commit("activeModal");
     },
   },
 });
