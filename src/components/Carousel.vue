@@ -1,16 +1,14 @@
 <template>
-  <section
-    class="carousel"
-    v-for="imaesProduct in etAllProductImae"
-    :key="imaesProduct.id"
-  >
-    <img
-      :src="require(`@/assets/images/${imaesProduct[currentImageId].imageUrl}`)"
-      width="520"
-      height="520"
-      loading="eager"
-      decoding="sync"
-    />
+  <section class="carousel" v-for="image in getProductsImage" :key="image.id">
+    <div class="carousel-image">
+      <img
+        :src="require(`@/assets/images/${image[currentImageId].imageUrl}`)"
+        width="520"
+        height="520"
+        loading="eager"
+        decoding="sync"
+      />
+    </div>
     <div class="carousel-buttons">
       <button @click="prevImageCaroussel()">
         <svg width="12" height="18" xmlns="http://www.w3.org/2000/svg">
@@ -37,12 +35,15 @@
     </div>
     <div class="carousel-thumbnail">
       <ul>
-        <li>
+        <li
+          v-for="im in image"
+          :key="im.id"
+          @click="currentImageThumbnailId(im.id)"
+        >
           <img
-            @click="etProductImae(currentImageId)"
-            :src="
-              require(`@/assets/images/${imaesProduct[0].imageThumbnailUrl}`)
-            "
+            @click.self="toggleactiveImgThumbnail()"
+            :class="{ active: activeImgThumbnail }"
+            :src="require(`@/assets/images/${im.imageThumbnailUrl}`)"
             width="90"
             height="90"
             loading="eager"
@@ -59,7 +60,8 @@ export default {
   name: "Carousel",
   data() {
     return {
-      currentImageId: 1,
+      currentImageId: 0,
+      activeImgThumbnail: false,
     };
   },
   methods: {
@@ -75,10 +77,17 @@ export default {
         this.etProductImae(this.currentImageId);
       }
     },
+    currentImageThumbnailId(id) {
+      this.currentImageId = id;
+    },
+
+    toggleactiveImgThumbnail() {
+      this.activeImgThumbnail = !this.activeImgThumbnail;
+    },
   },
   computed: {
-    products() {
-      return this.$store.getters.getProducts;
+    getProductsImage() {
+      return this.$store.getters.getProductsImage;
     },
     etAllProductImae() {
       return this.$store.getters.etAllProductImae;
@@ -86,9 +95,6 @@ export default {
     etProductImae(crImae) {
       return this.$store.getters.etProductImae(crImae);
     },
-  },
-  created() {
-    this.$store.dispatch("fetchProducts");
   },
 };
 </script>
@@ -135,6 +141,8 @@ export default {
 
 @media (min-width: 1200px) {
   .carousel {
+    cursor: pointer;
+
     img {
       border-radius: 20px;
     }
@@ -146,9 +154,23 @@ export default {
 
   .carousel-thumbnail {
     display: block;
+
+    ul {
+      margin-top: 40px;
+      display: flex;
+      gap: 30px;
+    }
+
     img {
       max-width: 90px;
       max-height: 90px;
+
+      &:hover {
+        opacity: 0.4;
+      }
+      &.active {
+        border: 2px solid $orange;
+      }
     }
   }
 }
