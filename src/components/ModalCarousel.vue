@@ -3,13 +3,14 @@
     class="modal"
     v-for="image in getProductsImage"
     :key="image.id"
-    v-show="SowModal"
+    v-show="ShowModal"
   >
     <div class="carousel">
       <div class="close-modal">
-        <button class="btn btn-close-modal" @click="activeModalCarousel()">
-          X
-        </button>
+        <button
+          class="btn btn-close-modal"
+          @click="activeModalCarousel()"
+        ></button>
       </div>
 
       <div class="carousel-image">
@@ -74,20 +75,17 @@ export default {
   data() {
     return {
       currentImageId: 0,
-      isActiveModal: null,
     };
   },
   methods: {
     nextImageCaroussel() {
       if (this.currentImageId < 3) {
         this.currentImageId = this.currentImageId + 1;
-        this.etProductImae(this.currentImageId);
       }
     },
     prevImageCaroussel() {
       if (this.currentImageId > 0) {
         this.currentImageId = this.currentImageId - 1;
-        this.etProductImae(this.currentImageId);
       }
     },
     currentImageThumbnailId(id) {
@@ -95,20 +93,22 @@ export default {
     },
 
     toggleactiveImgThumbnail(event) {
-      document.querySelectorAll(".carousel-thumbnail img").forEach((tImg) => {
-        tImg.classList.remove("active");
-      });
+      document
+        .querySelectorAll(".carousel-thumbnail img")
+        .forEach((thumbnailImage) => {
+          thumbnailImage.classList.remove("active");
+        });
       event.target.classList.toggle("active");
     },
     activeModalCarousel() {
-      return this.$store.dispatch("sowModal");
+      return this.$store.dispatch("showModal");
     },
   },
   computed: {
     getProductsImage() {
       return this.$store.getters.getProductsImage;
     },
-    SowModal() {
+    ShowModal() {
       return this.$store.getters.getActiveModal;
     },
   },
@@ -127,7 +127,8 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #00000061;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 999;
 
   .carousel {
     max-width: 650px;
@@ -135,6 +136,41 @@ export default {
 
   .close-modal {
     text-align: right;
+    margin-bottom: 20px;
+    height: 30px;
+
+    .btn-close-modal {
+      position: relative;
+      width: 30px;
+
+      &::before,
+      &::after {
+        content: " ";
+        display: block;
+        background-color: $white;
+        height: 4px;
+        width: 25px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: background-color 0.1s ease;
+      }
+
+      &::before {
+        transform: rotate(45deg);
+      }
+
+      &::after {
+        transform: rotate(-45deg);
+      }
+
+      &:hover {
+        &::before,
+        &::after {
+          background-color: $orange;
+        }
+      }
+    }
   }
 
   .carousel-image {
@@ -144,6 +180,14 @@ export default {
 
   .carousel-buttons {
     display: flex !important;
+    width: 110%;
+    left: -5%;
+    padding: 0;
+
+    button {
+      width: 56px;
+      height: 56px;
+    }
   }
 
   .carousel-thumbnail {

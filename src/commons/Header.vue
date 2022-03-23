@@ -4,15 +4,15 @@
       <TheNavigation />
       <Logo />
     </div>
-    <Shipping />
+    <ShippingNavigation />
+    <ShippingCart />
   </header>
-  <ShippingCart />
 </template>
 
 <script>
 import TheNavigation from "@/components/TheNavigation.vue";
 import Logo from "@/components/Logo.vue";
-import Shipping from "@/components/Shipping.vue";
+import ShippingNavigation from "@/components/ShippingNavigation.vue";
 import ShippingCart from "@/components/ShippingCart.vue";
 
 export default {
@@ -20,7 +20,7 @@ export default {
   components: {
     TheNavigation,
     Logo,
-    Shipping,
+    ShippingNavigation,
     ShippingCart,
   },
 };

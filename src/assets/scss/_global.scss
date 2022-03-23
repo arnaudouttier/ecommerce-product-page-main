@@ -21,7 +21,11 @@ a {
   font-size: 18px;
 
   &.orange {
-    background-color: $orange !important;
+    background-color: $orange ;
+  
+    &:hover {
+      background-color: $pale_orange;
+    }
   }
 }
 

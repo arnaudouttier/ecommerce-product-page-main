@@ -38,13 +38,15 @@
     <div class="carousel-thumbnail">
       <ul>
         <li
-          v-for="im in image"
-          :key="im.id"
-          @click="currentImageThumbnailId(im.id)"
+          v-for="imageItemThumbnail in image"
+          :key="imageItemThumbnail.id"
+          @click="currentImageThumbnailId(imageItemThumbnail.id)"
         >
           <img
             @click="toggleactiveImgThumbnail($event)"
-            :src="require(`@/assets/images/${im.imageThumbnailUrl}`)"
+            :src="
+              require(`@/assets/images/${imageItemThumbnail.imageThumbnailUrl}`)
+            "
             width="90"
             height="90"
             loading="eager"
@@ -68,13 +70,11 @@ export default {
     nextImageCaroussel() {
       if (this.currentImageId < 3) {
         this.currentImageId = this.currentImageId + 1;
-        this.etProductImae(this.currentImageId);
       }
     },
     prevImageCaroussel() {
       if (this.currentImageId > 0) {
         this.currentImageId = this.currentImageId - 1;
-        this.etProductImae(this.currentImageId);
       }
     },
     currentImageThumbnailId(id) {
@@ -88,7 +88,7 @@ export default {
       event.target.classList.toggle("active");
     },
     activeModalCarousel() {
-      return this.$store.dispatch("sowModal");
+      return this.$store.dispatch("showModal");
     },
   },
   computed: {
@@ -105,6 +105,11 @@ export default {
 .carousel {
   position: relative;
   cursor: pointer;
+
+  img {
+    border-radius: 13px;
+    box-sizing: border-box;
+  }
 }
 
 .carousel-image {
@@ -145,12 +150,6 @@ export default {
 }
 
 @media (min-width: 1200px) {
-  .carousel {
-    img {
-      border-radius: 20px;
-    }
-  }
-
   .carousel-buttons {
     display: none !important;
   }
@@ -165,10 +164,14 @@ export default {
       gap: 30px;
     }
 
-    img {
+    li {
+      background-color: $pale_orange;
+      border-radius: 13px;
       max-width: 90px;
       max-height: 90px;
+    }
 
+    img {
       &:hover {
         opacity: 0.4;
       }

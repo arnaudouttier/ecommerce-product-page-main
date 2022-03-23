@@ -16,4 +16,8 @@ export default {
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.logo {
+  padding-bottom: 3px;
+}
+</style>

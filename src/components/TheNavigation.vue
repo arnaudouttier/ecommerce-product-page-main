@@ -67,6 +67,7 @@ export default {
       margin-right: 30px;
 
       &:hover {
+        color: $black;
         border-bottom: 4px solid $orange;
       }
     }

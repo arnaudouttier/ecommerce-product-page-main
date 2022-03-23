@@ -1,10 +1,12 @@
 <template>
-  <div v-if="activeCart" class="shipping-cart">
+  <div v-show="activeCart" class="shipping-cart">
     <div class="s-cart-header">
       <h3>Cart</h3>
     </div>
-    <div class="s-cart-content empty" v-if="getProduct == 0">
-      <p>Your cart is empty.</p>
+    <div v-if="getCartQuantity == 0">
+      <div class="s-cart-content empty">
+        <p>Your cart is empty.</p>
+      </div>
     </div>
     <div v-else>
       <div v-for="cartItem in cart" :key="cartItem.id">
@@ -23,7 +25,7 @@
                 <strong>${{ cartItem.discountProductPrice }}.00</strong>
               </p>
             </div>
-            <div class="s-cart-trash" @click="cleanCart()">
+            <div class="s-cart-trash" @click="emptyCart()">
               <svg
                 width="14"
                 height="16"
@@ -53,9 +55,6 @@
 export default {
   name: "ShippingCart",
   methods: {
-    cleanCart() {
-      this.$store.dispatch("cleanCart");
-    },
     emptyCart() {
       this.$store.dispatch("emptyCart");
       this.$store.dispatch("activeCart");
@@ -68,10 +67,10 @@ export default {
     cart() {
       return this.$store.getters.cartProducts;
     },
-    getProduct() {
-      const product = this.$store.getters.getProducts;
-      return product.map((productItem) => {
-        return productItem.quantity;
+    getCartQuantity() {
+      const product = this.$store.getters.cartProducts;
+      return product.map((cartItem) => {
+        return cartItem.quantity;
       });
     },
   },
@@ -82,12 +81,14 @@ export default {
 @import "./src/assets/scss/style.scss";
 
 .shipping-cart {
-  width: 95%;
   background-color: $white;
-  margin: 2.5%;
-  border-radius: 5px;
+  border-radius: 12px;
+  -webkit-box-shadow: 0px 13px 24px -7px rgba(0, 0, 0, 0.46);
+  box-shadow: 0px 13px 24px -7px rgba(0, 0, 0, 0.46);
   position: absolute;
   top: 105px;
+  left: 2.5%;
+  right: 2.5%;
   z-index: 800;
 }
 
@@ -102,6 +103,7 @@ export default {
 
 .s-cart-content {
   color: $dark_grayish_blue;
+  font-weight: 300;
 
   &.empty {
     padding: 90px;
@@ -125,6 +127,7 @@ export default {
     strong {
       margin-left: 5px;
       color: $very_dark_blue;
+      font-weight: 700;
     }
   }
 
@@ -146,6 +149,13 @@ export default {
       cursor: pointer;
       text-align: right;
     }
+  }
+}
+@media (min-width: 1200px) {
+  .shipping-cart {
+    top: 100px;
+    right: -50px;
+    left: initial;
   }
 }
 </style>

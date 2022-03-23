@@ -176,15 +176,20 @@ export default {
 .product-quantity {
   grid-area: 2 / 1 / 3 / 3;
   display: flex;
+  align-items: center;
   background-color: $light_grayish_blue;
-  padding: 20px;
   border-radius: 10px;
   font-weight: 700;
+
+  padding: 0 20px;
 
   button {
     font-size: 30px;
     color: $orange;
-    flex-grow: 1;
+
+    &:hover {
+      color: $pale_orange;
+    }
   }
 
   p {
@@ -201,6 +206,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 22px;
 
     svg {
       margin-right: 20px;

@@ -25,7 +25,7 @@
 
 <script>
 export default {
-  name: "Shipping",
+  name: "ShippingNavigation",
   data() {
     return {
       activeAvatar: false,

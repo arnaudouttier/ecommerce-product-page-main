@@ -56,6 +56,7 @@ export default {
     a {
       font-weight: 700;
       margin-bottom: 30px;
+      color: $black;
     }
   }
 }

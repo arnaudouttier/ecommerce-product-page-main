@@ -88,13 +88,6 @@ export default createStore({
       });
     },
 
-    cleanCart(state) {
-      return state.cart.forEach((c) => {
-        c.quantity = 0;
-        c.discountProductPrice = 0;
-      });
-    },
-
     emptyCart(state) {
       return (state.cart = []);
     },
@@ -155,7 +148,7 @@ export default createStore({
       commit("toggleCart");
     },
 
-    sowModal({ commit }) {
+    showModal({ commit }) {
       commit("activeModal");
     },
   },
