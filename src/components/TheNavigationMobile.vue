@@ -10,11 +10,11 @@
       </svg>
     </button>
     <nav>
-      <router-link :to="{ name: 'collections' }">Collections</router-link>
-      <router-link :to="{ name: 'men' }">Men</router-link>
-      <router-link :to="{ name: 'women' }">Women</router-link>
-      <router-link :to="{ name: 'about' }">About</router-link>
-      <router-link :to="{ name: 'contact' }">Contact</router-link>
+      <a href="#">Collections</a>
+      <a href="#">Men</a>
+      <a href="#">Women</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
     </nav>
   </div>
 </template>

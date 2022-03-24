@@ -4,8 +4,8 @@
 const _products = [
   {
     id: 0,
-    title: "iPad 4 Mini",
-    category: "sneakers company",
+    title: "Fall Limited Edition Sneakers",
+    category: "Sneaker Company",
     description:
       "These low-profile sneakers are your perfect casual wear companion . Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
     discountPrice: 125.0,

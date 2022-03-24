@@ -105,11 +105,6 @@ export default {
 .carousel {
   position: relative;
   cursor: pointer;
-
-  img {
-    border-radius: 13px;
-    box-sizing: border-box;
-  }
 }
 
 .carousel-image {
@@ -150,6 +145,13 @@ export default {
 }
 
 @media (min-width: 1200px) {
+  .carousel {
+    img {
+      border-radius: 13px;
+      box-sizing: border-box;
+    }
+  }
+
   .carousel-buttons {
     display: none !important;
   }

@@ -7,49 +7,6 @@ const routes = [
     name: "Home",
     component: Home,
   },
-  {
-    path: "/collections",
-    name: "collections",
-    component: function () {
-      return import(/* webpackChunkName: "about" */ "../views/About.vue");
-    },
-  },
-
-  {
-    path: "/men",
-    name: "men",
-
-    component: function () {
-      return import(/* webpackChunkName: "about" */ "../views/About.vue");
-    },
-  },
-
-  {
-    path: "/women",
-    name: "women",
-
-    component: function () {
-      return import(/* webpackChunkName: "about" */ "../views/About.vue");
-    },
-  },
-
-  {
-    path: "/about",
-    name: "about",
-
-    component: function () {
-      return import(/* webpackChunkName: "about" */ "../views/About.vue");
-    },
-  },
-
-  {
-    path: "/contact",
-    name: "contact",
-
-    component: function () {
-      return import(/* webpackChunkName: "about" */ "../views/About.vue");
-    },
-  },
 ];
 
 const router = createRouter({

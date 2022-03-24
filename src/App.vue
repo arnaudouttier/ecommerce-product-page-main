@@ -3,7 +3,6 @@
   <router-view />
 </template>
 
-
 <script>
 import Header from "@/commons/Header.vue";
 
@@ -16,7 +15,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import './src/assets/scss/style.scss';
+@import "./src/assets/scss/style.scss";
 
 #app {
   position: relative;

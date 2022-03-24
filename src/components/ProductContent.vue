@@ -9,13 +9,13 @@
       <h3>{{ product.title }}</h3>
       <p>{{ product.description }}</p>
     </div>
-    <div class="product-manage">
+    <div class="product-manager">
       <div class="product-price">
         <div class="discount-price">
           <h3>${{ discountCartTotal }}.00</h3>
           <p>50%</p>
         </div>
-        <div class="unit-price">
+        <div class="product-unit-price">
           <p>${{ cartTotal }}.00</p>
         </div>
       </div>
@@ -106,7 +106,8 @@ export default {
 
   h3 {
     color: $very_dark_blue;
-    font-size: 30px;
+    font-size: clamp(30px, calc(1.875rem + ((1vw - 3.75px) * 0.9709)), 45px);
+    min-height: 0vw;
     margin-bottom: 20px;
   }
 
@@ -117,13 +118,13 @@ export default {
   }
 }
 
-.product-manage {
+.product-manager {
   padding: 0 25px 25px 25px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(3, 1fr);
   grid-column-gap: 0px;
-  grid-row-gap: 18px;
+  grid-row-gap: 26px;
 }
 
 .product-price {
@@ -151,7 +152,7 @@ export default {
     }
   }
 
-  .unit-price {
+  .product-unit-price {
     color: $grayish_blue;
     font-size: 20px;
     font-weight: 700;
@@ -223,7 +224,7 @@ export default {
     padding: 60px 0 80px 0;
   }
 
-  .product-manage {
+  .product-manager {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
     padding: 25px;
@@ -233,7 +234,7 @@ export default {
     grid-area: 1 / 1 / 2 / 2;
     display: block;
 
-    .unit-price {
+    .product-unit-price {
       display: inline-block;
       margin-top: 10px;
     }

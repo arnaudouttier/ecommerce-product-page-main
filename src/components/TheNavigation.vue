@@ -12,11 +12,11 @@
       </button>
     </div>
     <nav class="site-navigation">
-      <router-link :to="{ name: 'collections' }">Collections</router-link>
-      <router-link :to="{ name: 'men' }">Men</router-link>
-      <router-link :to="{ name: 'women' }">Women</router-link>
-      <router-link :to="{ name: 'about' }">About</router-link>
-      <router-link :to="{ name: 'contact' }">Contact</router-link>
+      <a href="#">Collections</a>
+      <a href="#">Men</a>
+      <a href="#">Women</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
     </nav>
     <TheNavigationMobile v-if="activeSidebar" />
   </div>
